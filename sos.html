@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Emergency - Smart Tourist Safety System</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sos-container">
+        <!-- Header -->
+        <div class="sos-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="system-title">🏛️ Smart Tourist Safety System</h1>
+                    <p class="system-subtitle">Emergency Response Center</p>
+                </div>
+                <div class="status-section">
+                    <div class="status-indicator">
+                        <div class="status-dot" id="statusDot"></div>
+                        <span id="statusText">Monitoring Active</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div class="sos-dashboard">
+            <!-- User Info -->
+            <div class="user-info-card">
+                <h3>👤 User Information</h3>
+                <div class="user-details">
+                    <p><strong>ID:</strong> <span id="userId">TST001</span></p>
+                    <p><strong>Name:</strong> <span id="userName">Tourist User</span></p>
+                    <p><strong>Blood Group:</strong> <span id="bloodGroup">O+</span></p>
+                    <p><strong>Emergency Contact:</strong> <span id="emergencyContact">+91 9876543210</span></p>
+                </div>
+            </div>
+
+            <!-- Speed Monitor -->
+            <div class="monitor-card">
+                <h3>⚡ Speed Monitor</h3>
+                <div class="speed-display">
+                    <div class="speed-value">
+                        <span id="currentSpeed">45</span>
+                        <span class="speed-unit">km/h</span>
+                    </div>
+                    <div class="speed-status" id="speedStatus">Normal</div>
+                </div>
+            </div>
+
+            <!-- Current Location -->
+            <div class="location-card">
+                <h3>📍 Current Location</h3>
+                <div class="location-details">
+                    <p><strong>Address:</strong> <span id="currentAddress">New Delhi, India</span></p>
+                    <p><strong>Coordinates:</strong> <span id="coordinates">28.6139, 77.2090</span></p>
+                    <p><strong>Accuracy:</strong> <span id="accuracy">GPS: High</span></p>
+                </div>
+            </div>
+
+            <!-- Emergency Contacts -->
+            <div class="emergency-contacts-card">
+                <h3>🚨 Emergency Services</h3>
+                <div class="emergency-services">
+                    <div class="emergency-service">
+                        <div class="service-icon">🚔</div>
+                        <div class="service-info">
+                            <h4>Local Police Station</h4>
+                            <p>📞 100 • 2.5 km away</p>
+                        </div>
+                        <button class="btn btn-call" onclick="callEmergencyService('police')">Call</button>
+                    </div>
+                    
+                    <div class="emergency-service">
+                        <div class="service-icon">🚑</div>
+                        <div class="service-info">
+                            <h4>Emergency Medical Services</h4>
+                            <p>📞 102 • 3.1 km away</p>
+                        </div>
+                        <button class="btn btn-call" onclick="callEmergencyService('medical')">Call</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SOS Button -->
+            <div class="sos-button-container">
+                <button class="sos-button" id="sosButton">
+                    <div class="sos-pulse"></div>
+                    <div class="sos-content">
+                        <div class="sos-text">SOS</div>
+                        <div class="sos-subtext">EMERGENCY</div>
+                    </div>
+                </button>
+                <p class="sos-instruction">Tap for immediate emergency assistance</p>
+            </div>
+
+            <!-- Return to Dashboard -->
+            <div class="navigation-section">
+                <button class="btn btn-secondary" id="returnToDashboard">
+                    <span>← Return to Dashboard</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Detection Modal -->
+    <div id="emergencyModal" class="modal hidden">
+        <div class="modal-content emergency-modal">
+            <div class="emergency-header">
+                <div class="countdown-timer" id="countdownTimer">15</div>
+                <h2>🚨 Emergency Detected!</h2>
+                <p class="emergency-question">Are you safe?</p>
+                <p class="timeout-warning">Emergency services will be contacted in <span id="timeLeft">15</span> seconds</p>
+            </div>
+            
+            <div class="emergency-buttons">
+                <button class="btn emergency-yes" id="safeButton">
+                    <span>✅ I'm Safe</span>
+                </button>
+                <button class="btn emergency-no" id="helpButton">
+                    <span>🆘 I Need Help</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Protocol Modal -->
+    <div id="emergencyProtocolModal" class="modal hidden">
+        <div class="modal-content emergency-protocol">
+            <div class="emergency-header">
+                <h2>🚨 Emergency Protocol Activated</h2>
+                <div class="emergency-message">
+                    <p><strong>Emergency services have been notified</strong></p>
+                    <p>Help is on the way. Stay calm and follow safety instructions.</p>
+                </div>
+            </div>
+            
+            <div class="protocol-status">
+                <div class="protocol-item">
+                    <div class="protocol-icon">🚔</div>
+                    <div class="protocol-details">
+                        <strong>Police Notified</strong>
+                        <p>Local police station has been contacted</p>
+                    </div>
+                    <span class="protocol-status-badge">✅ Sent</span>
+                </div>
+                
+                <div class="protocol-item">
+                    <div class="protocol-icon">🚑</div>
+                    <div class="protocol-details">
+                        <strong>Medical Services Alert</strong>
+                        <p>Emergency medical services dispatched</p>
+                    </div>
+                    <span class="protocol-status-badge">✅ Sent</span>
+                </div>
+                
+                <div class="protocol-item">
+                    <div class="protocol-icon">📞</div>
+                    <div class="protocol-details">
+                        <strong>Emergency Contacts</strong>
+                        <p>Your emergency contacts have been notified</p>
+                    </div>
+                    <span class="protocol-status-badge">✅ Sent</span>
+                </div>
+                
+                <div class="protocol-item">
+                    <div class="protocol-icon">📍</div>
+                    <div class="protocol-details">
+                        <strong>Location Shared</strong>
+                        <p>Your exact location has been transmitted</p>
+                    </div>
+                    <span class="protocol-status-badge">✅ Sent</span>
+                </div>
+            </div>
+            
+            <div class="emergency-actions">
+                <button class="btn btn-primary" id="returnToDashboardFromProtocol">
+                    <span>Return to Dashboard</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Monitoring Indicator -->
+    <div class="background-indicator">
+        <div class="indicator-dot"></div>
+        <span>Background Monitoring Active</span>
+    </div>
+
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

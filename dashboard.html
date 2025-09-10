@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Smart Tourist Safety System</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <div class="logo-section">
+                    <h1 class="system-title">🏛️ Smart Tourist Safety System</h1>
+                    <p class="system-subtitle">SIH-2025 Monitoring & Incident Response</p>
+                </div>
+                <div class="user-section">
+                    <div class="greeting-container">
+                        <div class="time-greeting" id="timeGreeting">Good Morning!</div>
+                        <div class="user-greeting" id="userGreeting">Welcome, Admin</div>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-container-main">
+            <div class="dashboard-grid">
+                <!-- Vehicle Assistance Card -->
+                <div class="dashboard-card" onclick="navigateTo('services.html#vehicle')">
+                    <div class="card-icon vehicle-icon">
+                        🚗
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Vehicle Assistance</h3>
+                        <p class="card-description">Roadside help, breakdown support, accident reporting</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- Medical Assistance Card -->
+                <div class="dashboard-card" onclick="navigateTo('services.html#medical')">
+                    <div class="card-icon medical-icon">
+                        🏥
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Medical Assistance</h3>
+                        <p class="card-description">Health emergencies, first aid, hospital services</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- Police Assistance Card -->
+                <div class="dashboard-card" onclick="navigateTo('services.html#police')">
+                    <div class="card-icon police-icon">
+                        👮
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Police Assistance</h3>
+                        <p class="card-description">Security concerns, theft reporting, legal help</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- Incident History Card -->
+                <div class="dashboard-card" onclick="navigateTo('profile.html#history')">
+                    <div class="card-icon history-icon">
+                        📋
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Incident History</h3>
+                        <p class="card-description">Past incidents, reports, tracking status</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- Emergency Contacts Card -->
+                <div class="dashboard-card" onclick="navigateTo('profile.html#contacts')">
+                    <div class="card-icon contacts-icon">
+                        📞
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Emergency Contacts</h3>
+                        <p class="card-description">Manage contacts, quick dial, notifications</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- My Profile Card -->
+                <div class="dashboard-card" onclick="navigateTo('profile.html')">
+                    <div class="card-icon profile-icon">
+                        👤
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">My Profile</h3>
+                        <p class="card-description">User info, digital ID, safety score</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- System Status Card -->
+                <div class="dashboard-card status-card">
+                    <div class="status-header">
+                        <h3>System Status</h3>
+                        <div class="status-indicator active"></div>
+                    </div>
+                    <div class="status-content">
+                        <div class="status-item">
+                            <span class="status-label">AI Monitoring:</span>
+                            <span class="status-value active">Active</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Geo-Fencing:</span>
+                            <span class="status-value active">Operational</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Digital ID:</span>
+                            <span class="status-value verified">Verified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOS Button -->
+        <div class="sos-container">
+            <button class="sos-button" onclick="activateEmergencySOS()">
+                <div class="sos-pulse"></div>
+                <div class="sos-content">
+                    <div class="sos-text">SOS</div>
+                    <div class="sos-subtext">EMERGENCY</div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

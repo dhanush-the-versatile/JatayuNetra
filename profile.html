@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile & History - Smart Tourist Safety System</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- App Header -->
+        <div class="app-header">
+            <div class="header-content">
+                <h1 class="header-title">🏛️ User Profile & History</h1>
+                <button class="btn btn-secondary" onclick="goBackToDashboard()">← Dashboard</button>
+            </div>
+        </div>
+
+        <!-- User Summary -->
+        <div class="user-summary">
+            <div class="profile-picture">
+                <img id="profile-img" src="https://via.placeholder.com/150/4f46e5/ffffff?text=RK" alt="Profile">
+            </div>
+            <div class="user-info">
+                <h2 id="user-name">Rajesh Kumar</h2>
+                <p>Member since <span id="user-since">June 2023</span></p>
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Primary Vehicle:</span>
+                        <span id="primary-vehicle">AP39AB1234</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Requests:</span>
+                        <span id="total-requests">12</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Emergency Contacts:</span>
+                        <span id="emergency-contacts-count">5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" data-tab="profile" onclick="showTab('profile')">
+                <span>👤</span> Profile
+            </button>
+            <button class="tab-btn" data-tab="vehicles" onclick="showTab('vehicles')">
+                <span>🚗</span> Vehicles
+            </button>
+            <button class="tab-btn" data-tab="contacts" onclick="showTab('contacts')">
+                <span>📞</span> Contacts
+            </button>
+            <button class="tab-btn" data-tab="history" onclick="showTab('history')">
+                <span>📋</span> History
+            </button>
+            <button class="tab-btn" data-tab="settings" onclick="showTab('settings')">
+                <span>⚙️</span> Settings
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content-container">
+            
+            <!-- Profile Tab -->
+            <div id="profile-tab" class="tab-content active">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Personal Information</h3>
+                        <button class="btn btn-primary" onclick="editProfile()">
+                            <span>✏️</span> Edit
+                        </button>
+                    </div>
+                    <div class="card__body">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" id="profile-name" class="form-control" value="Rajesh Kumar" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Age</label>
+                                <input type="number" id="profile-age" class="form-control" value="28" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Gender</label>
+                                <select id="profile-gender" class="form-control" disabled>
+                                    <option value="Male" selected>Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" id="profile-phone" class="form-control" value="+91-9876543210" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" id="profile-email" class="form-control" value="rajesh.kumar@email.com" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Address</label>
+                            <textarea id="profile-address" class="form-control" readonly>123 Main Street, Vizianagaram, Andhra Pradesh, India</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicles Tab -->
+            <div id="vehicles-tab" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>My Vehicles</h3>
+                        <button class="btn btn-primary" onclick="showAddVehicleModal()">
+                            <span>+</span> Add Vehicle
+                        </button>
+                    </div>
+                    <div class="card__body">
+                        <div id="vehicles-list" class="vehicles-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contacts Tab -->
+            <div id="contacts-tab" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Emergency Contacts</h3>
+                        <button class="btn btn-primary" onclick="showAddContactModal()">
+                            <span>+</span> Add Contact
+                        </button>
+                    </div>
+                    <div class="card__body">
+                        <div id="contacts-grid" class="contacts-grid"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div id="history-tab" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Request History</h3>
+                        <div class="history-controls">
+                            <select id="history-filter" class="form-control">
+                                <option value="all">All Requests</option>
+                                <option value="Vehicle Assistance">Vehicle Assistance</option>
+                                <option value="Medical Assistance">Medical Assistance</option>
+                                <option value="Police Assistance">Police Assistance</option>
+                                <option value="Emergency Contact">Emergency Contact</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card__body">
+                        <div id="history-list" class="history-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings-tab" class="tab-content">
+                <div class="settings-grid">
+                    <!-- Notifications Settings -->
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Notifications</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Push Notifications</h4>
+                                    <p>Receive push notifications for service updates</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>SMS Alerts</h4>
+                                    <p>Get SMS alerts for emergency services</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Email Notifications</h4>
+                                    <p>Receive email summaries and updates</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Settings -->
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Privacy & Security</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Location Tracking</h4>
+                                    <p>Allow location access for emergency services</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Data Sharing</h4>
+                                    <p>Share data with service providers for better experience</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <span id="toast-message"></span>
+        <button class="toast-close" onclick="hideToast()">&times;</button>
+    </div>
+
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
