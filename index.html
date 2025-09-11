@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Tourist Safety - Northeast India</title>
-    <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="stylesheet" href="styles.css">
     <meta name="theme-color" content="#1e3a8a">
     <link rel="manifest" href="manifest.json">
-    <meta name="description" content="Smart Tourist Safety Monitoring & Incident Response System for Northeast India with AI, Blockchain, Geo-Fencing & IoT Integration">
+    <meta name="description" content="Smart Tourist Safety Monitoring & Incident Response System for Northeast India">
 </head>
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
             <div class="logo-container">
-                <div class="app-logo-placeholder">🏔️</div>
-                <h1 class="app-logo">Smart Tourist Safety</h1>
+                <div class="app-logo-icon">🏔</div>
+                <h1 class="app-title">Smart Tourist Safety</h1>
                 <p class="app-subtitle">Northeast India Monitoring System</p>
                 <p class="app-tagline">AI • Blockchain • Geo-Fencing • IoT</p>
             </div>
@@ -24,226 +24,126 @@
         </div>
     </div>
 
-    <!-- Digital ID Registration Screen -->
-    <div id="digital-id-screen" class="screen hidden">
-        <div class="auth-container">
-            <div class="auth-header">
-                <div class="auth-logo-placeholder">🏔️</div>
-                <h1 class="app-logo">Digital Tourist ID</h1>
-                <p class="app-subtitle">Secure Blockchain-Based Identity</p>
-            </div>
-            <div class="auth-form">
-                <div class="id-type-selector">
-                    <h3>Select Identity Type</h3>
-                    <div class="id-type-options">
-                        <button class="id-type-btn" data-type="domestic">
-                            🏛️ Indian Citizen<br>
-                            <small>Aadhaar Verification</small>
-                        </button>
-                        <button class="id-type-btn" data-type="international">
-                            ✈️ International Tourist<br>
-                            <small>Passport Verification</small>
-                        </button>
-                    </div>
-                </div>
-                
-                <form id="digital-id-form" class="hidden">
-                    <h3>Tourist Registration</h3>
-                    
-                    <!-- Basic Information -->
-                    <div class="form-section">
-                        <h4>📋 Basic Information</h4>
-                        <div class="form-group">
-                            <label for="tourist-name">Full Name</label>
-                            <input type="text" id="tourist-name" name="tourist-name" class="form-control" required>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="id-number">Aadhaar/Passport Number</label>
-                                <input type="text" id="id-number" name="id-number" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="mobile-number">Mobile Number</label>
-                                <input type="tel" id="mobile-number" name="mobile-number" class="form-control" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Trip Information -->
-                    <div class="form-section">
-                        <h4>🗺️ Trip Details</h4>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="arrival-date">Arrival Date</label>
-                                <input type="date" id="arrival-date" name="arrival-date" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="departure-date">Departure Date</label>
-                                <input type="date" id="departure-date" name="departure-date" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="destination-state">Destination State</label>
-                            <select id="destination-state" name="destination-state" class="form-control" required>
-                                <option value="">Select State</option>
-                                <option value="arunachal">Arunachal Pradesh</option>
-                                <option value="assam">Assam</option>
-                                <option value="manipur">Manipur</option>
-                                <option value="meghalaya">Meghalaya</option>
-                                <option value="mizoram">Mizoram</option>
-                                <option value="nagaland">Nagaland</option>
-                                <option value="sikkim">Sikkim</option>
-                                <option value="tripura">Tripura</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="planned-itinerary">Planned Itinerary</label>
-                            <textarea id="planned-itinerary" name="planned-itinerary" class="form-control" rows="3" placeholder="Brief description of places you plan to visit"></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Emergency Contacts -->
-                    <div class="form-section">
-                        <h4>📞 Emergency Contacts</h4>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="emergency-name">Contact Name</label>
-                                <input type="text" id="emergency-name" name="emergency-name" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="emergency-phone">Contact Phone</label>
-                                <input type="tel" id="emergency-phone" name="emergency-phone" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="emergency-relation">Relationship</label>
-                            <select id="emergency-relation" name="emergency-relation" class="form-control" required>
-                                <option value="">Select Relationship</option>
-                                <option value="family">Family Member</option>
-                                <option value="friend">Friend</option>
-                                <option value="colleague">Colleague</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Privacy Consent -->
-                    <div class="form-section">
-                        <h4>🔒 Privacy & Consent</h4>
-                        <div class="checkbox-wrapper">
-                            <input type="checkbox" id="location-consent" required>
-                            <label for="location-consent">I consent to location tracking for safety purposes</label>
-                        </div>
-                        <div class="checkbox-wrapper">
-                            <input type="checkbox" id="data-consent" required>
-                            <label for="data-consent">I agree to secure blockchain storage of my digital ID</label>
-                        </div>
-                        <div class="checkbox-wrapper">
-                            <input type="checkbox" id="terms-consent" required>
-                            <label for="terms-consent">I agree to the Terms of Service and Privacy Policy</label>
-                        </div>
-                    </div>
-
-                    <button type="submit" id="generate-id-btn" class="btn btn-primary btn-full-width">
-                        🔗 Generate Digital Tourist ID
-                    </button>
-                </form>
-
-                <div id="id-generation-progress" class="hidden">
-                    <div class="progress-container">
-                        <h3>🔗 Generating Blockchain ID...</h3>
-                        <div class="progress-steps">
-                            <div class="progress-step active">📋 Verifying Documents</div>
-                            <div class="progress-step">🔒 Creating Blockchain Entry</div>
-                            <div class="progress-step">🆔 Generating Digital ID</div>
-                            <div class="progress-step">✅ Registration Complete</div>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="id-success-screen" class="hidden">
-                    <div class="success-container">
-                        <div class="success-icon">✅</div>
-                        <h3>Digital Tourist ID Generated!</h3>
-                        <div class="digital-id-card">
-                            <div class="id-header">
-                                <h4>🏔️ NORTHEAST INDIA TOURIST ID</h4>
-                                <div class="id-number">ID: <span id="generated-id-number"></span></div>
-                            </div>
-                            <div class="id-body">
-                                <div class="tourist-info">
-                                    <p><strong>Name:</strong> <span id="display-name"></span></p>
-                                    <p><strong>Valid Until:</strong> <span id="display-validity"></span></p>
-                                    <p><strong>Safety Score:</strong> <span class="safety-score">95/100</span></p>
-                                </div>
-                                <div class="qr-code">📱</div>
-                            </div>
-                            <div class="id-footer">
-                                <small>Blockchain Verified • AI Monitored • Geo-Protected</small>
-                            </div>
-                        </div>
-                        <button id="proceed-to-app" class="btn btn-primary btn-full-width">
-                            📱 Access Safety Dashboard
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Login Screen -->
     <div id="login-screen" class="screen hidden">
-        <div class="auth-container">
-            <div class="auth-header">
-                <div class="auth-logo-placeholder">🏔️</div>
-                <h1 class="app-logo">Smart Tourist Safety</h1>
-                <p class="app-subtitle">Northeast India Monitoring System</p>
+        <div class="login-container">
+            <div class="login-header">
+                <div class="header-logo">🏔</div>
+                <h1 class="login-title">Smart Tourist Safety</h1>
+                <p class="login-subtitle">Northeast India Monitoring System</p>
+                <p class="login-tagline">Secure Login Portal</p>
             </div>
-            <div class="auth-form">
-                <div class="user-type-selector">
-                    <button class="user-type-btn active" data-type="tourist">
-                        🧳 Tourist Access
+
+            <div class="login-form-container">
+                <!-- User Type Toggle -->
+                <div class="user-type-toggle">
+                    <button class="toggle-btn active" data-type="tourist">
+                        🧳 Tourist Login
                     </button>
-                    <button class="user-type-btn" data-type="authority">
-                        👮 Authority Dashboard
+                    <button class="toggle-btn" data-type="authority">
+                        👮 Authority Login
                     </button>
                 </div>
-                
-                <form id="login-form">
-                    <div id="tourist-login" class="login-section">
-                        <h3>Tourist Login</h3>
-                        <div class="form-group">
-                            <label for="digital-id">Digital Tourist ID</label>
-                            <input type="text" id="digital-id" class="form-control" placeholder="Enter your Digital ID">
-                        </div>
-                        <div class="form-group">
-                            <label for="mobile-otp">Mobile OTP</label>
-                            <input type="text" id="mobile-otp" class="form-control" placeholder="Enter OTP sent to your mobile">
-                        </div>
-                        <p class="helper-text">Don't have a Digital ID? <a href="#" id="register-link">Register Here</a></p>
+
+                <!-- Tourist Login Form -->
+                <form id="tourist-login-form" class="login-form">
+                    <h2>Tourist Access Portal</h2>
+                    
+                    <div class="form-group">
+                        <label for="tourist-username">Username / Digital ID</label>
+                        <input type="text" id="tourist-username" class="form-input" 
+                               placeholder="Enter your username or Digital ID" required>
+                        <div class="input-icon">👤</div>
                     </div>
 
-                    <div id="authority-login" class="login-section hidden">
-                        <h3>Authority Login</h3>
-                        <div class="form-group">
-                            <label for="authority-id">Authority ID</label>
-                            <input type="text" id="authority-id" class="form-control" placeholder="Enter your Authority ID">
-                        </div>
-                        <div class="form-group">
-                            <label for="authority-password">Password</label>
-                            <input type="password" id="authority-password" class="form-control" placeholder="Enter password">
-                        </div>
-                        <p class="helper-text">Demo: <strong>POLICE001</strong> / <strong>northeast123</strong></p>
+                    <div class="form-group">
+                        <label for="tourist-password">Password</label>
+                        <input type="password" id="tourist-password" class="form-input" 
+                               placeholder="Enter your password" required>
+                        <div class="input-icon">🔒</div>
+                        <button type="button" class="password-toggle" onclick="togglePassword('tourist-password')">
+                            <span>👁</span>
+                        </button>
                     </div>
 
-                    <button type="submit" id="login-button" class="btn btn-primary btn-full-width">
-                        🔐 Secure Login
+                    <div class="form-options">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="remember-tourist" class="checkbox-input">
+                            <label for="remember-tourist" class="checkbox-label">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="login-btn primary">
+                        <span class="btn-icon">🔐</span>
+                        <span class="btn-text">Secure Login</span>
                     </button>
+
+                    <div class="demo-credentials">
+                        <h4>Demo Credentials:</h4>
+                        <div class="demo-item">
+                            <strong>Username:</strong> <code>tourist_demo</code>
+                        </div>
+                        <div class="demo-item">
+                            <strong>Password:</strong> <code>northeast123</code>
+                        </div>
+                    </div>
                 </form>
 
+                <!-- Authority Login Form -->
+                <form id="authority-login-form" class="login-form hidden">
+                    <h2>Authority Dashboard Access</h2>
+                    
+                    <div class="form-group">
+                        <label for="authority-id">Authority ID</label>
+                        <input type="text" id="authority-id" class="form-input" 
+                               placeholder="Enter your Authority ID" required>
+                        <div class="input-icon">🛡</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="authority-password">Password</label>
+                        <input type="password" id="authority-password" class="form-input" 
+                               placeholder="Enter your password" required>
+                        <div class="input-icon">🔒</div>
+                        <button type="button" class="password-toggle" onclick="togglePassword('authority-password')">
+                            <span>👁</span>
+                        </button>
+                    </div>
+
+                    <div class="form-options">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="remember-authority" class="checkbox-input">
+                            <label for="remember-authority" class="checkbox-label">Remember me</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-btn primary">
+                        <span class="btn-icon">🔐</span>
+                        <span class="btn-text">Authority Login</span>
+                    </button>
+
+                    <div class="demo-credentials">
+                        <h4>Demo Credentials:</h4>
+                        <div class="demo-item">
+                            <strong>Authority ID:</strong> <code>POLICE001</code>
+                        </div>
+                        <div class="demo-item">
+                            <strong>Password:</strong> <code>admin123</code>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Registration Link -->
+                <div class="registration-link">
+                    <p>Don't have an account?</p>
+                    <button id="show-register-btn" class="link-btn">
+                        <span class="btn-icon">📝</span>
+                        <span class="btn-text">Create New Account</span>
+                    </button>
+                </div>
+
+                <!-- Language Selection -->
                 <div class="language-selector">
                     <h4>🌐 Select Language</h4>
                     <div class="language-grid">
@@ -255,23 +155,268 @@
                         <button class="lang-btn" data-lang="kha">খাসি</button>
                     </div>
                 </div>
+
+                <!-- Footer -->
+                <div class="login-footer">
+                    <p>🛡 Secured by Advanced Encryption</p>
+                    <p>🏔 Serving Northeast India Tourism Safety</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Floating SOS Button -->
-    <div class="sos-container">
-        <button id="main-sos-button" class="sos-button" onclick="activateEmergencySOS()" title="Emergency SOS">
-            <div class="sos-pulse"></div>
-            <div class="sos-content">
-                <div class="sos-text">SOS</div>
-                <div class="sos-subtext">Emergency</div>
+    <!-- Registration Screen -->
+    <div id="register-screen" class="screen hidden">
+        <div class="register-container">
+            <div class="register-header">
+                <button class="back-btn" onclick="showLoginScreen()">
+                    <span>← Back to Login</span>
+                </button>
+                <div class="header-logo">🏔</div>
+                <h1 class="register-title">Create Digital Tourist ID</h1>
+                <p class="register-subtitle">Secure Blockchain-Based Identity</p>
             </div>
-        </button>
+
+            <div class="register-form-container">
+                <!-- Identity Type Selection -->
+                <div id="id-type-selection" class="id-type-section">
+                    <h3>Select Your Identity Type</h3>
+                    <div class="id-type-options">
+                        <div class="id-type-card" data-type="domestic">
+                            <div class="card-icon">🏛</div>
+                            <h4>Indian Citizen</h4>
+                            <p>Aadhaar Card Verification</p>
+                            <button class="select-btn">Select</button>
+                        </div>
+                        <div class="id-type-card" data-type="international">
+                            <div class="card-icon">✈</div>
+                            <h4>International Tourist</h4>
+                            <p>Passport Verification</p>
+                            <button class="select-btn">Select</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="registration-form" class="register-form hidden">
+                    <h3>Tourist Registration</h3>
+
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h4>📋 Personal Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" class="form-input" min="18" max="100" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" class="form-input" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality">Nationality</label>
+                                <input type="text" id="nationality" class="form-input" value="Indian" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number</label>
+                                <input type="tel" id="mobile" class="form-input" 
+                                       placeholder="+91-XXXXX-XXXXX" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id-number">Aadhaar/Passport Number</label>
+                            <input type="text" id="id-number" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <!-- Account Setup -->
+                    <div class="form-section">
+                        <h4>🔐 Account Setup</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="new-username">Username</label>
+                                <input type="text" id="new-username" class="form-input" 
+                                       placeholder="Choose a unique username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">Password</label>
+                                <input type="password" id="new-password" class="form-input" 
+                                       placeholder="Strong password (8+ characters)" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('new-password')">
+                                    <span>👁</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" class="form-input" 
+                                   placeholder="Re-enter your password" required>
+                        </div>
+                    </div>
+
+                    <!-- Trip Information -->
+                    <div class="form-section">
+                        <h4>🗺 Trip Details</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="arrival-date">Arrival Date</label>
+                                <input type="date" id="arrival-date" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="departure-date">Departure Date</label>
+                                <input type="date" id="departure-date" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="destination-state">Primary Destination</label>
+                            <select id="destination-state" class="form-input" required>
+                                <option value="">Select State</option>
+                                <option value="arunachal">Arunachal Pradesh</option>
+                                <option value="assam">Assam</option>
+                                <option value="manipur">Manipur</option>
+                                <option value="meghalaya">Meghalaya</option>
+                                <option value="mizoram">Mizoram</option>
+                                <option value="nagaland">Nagaland</option>
+                                <option value="sikkim">Sikkim</option>
+                                <option value="tripura">Tripura</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Contact -->
+                    <div class="form-section">
+                        <h4>📞 Emergency Contact</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="emergency-name">Contact Name</label>
+                                <input type="text" id="emergency-name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emergency-phone">Phone Number</label>
+                                <input type="tel" id="emergency-phone" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergency-relation">Relationship</label>
+                            <select id="emergency-relation" class="form-input" required>
+                                <option value="">Select Relationship</option>
+                                <option value="family">Family Member</option>
+                                <option value="friend">Friend</option>
+                                <option value="colleague">Colleague</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Consent & Privacy -->
+                    <div class="form-section">
+                        <h4>🔒 Consent & Privacy</h4>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="location-consent" class="checkbox-input" required>
+                            <label for="location-consent" class="checkbox-label">
+                                I consent to location tracking for safety purposes
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="data-consent" class="checkbox-input" required>
+                            <label for="data-consent" class="checkbox-label">
+                                I agree to secure blockchain storage of my digital ID
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms-consent" class="checkbox-input" required>
+                            <label for="terms-consent" class="checkbox-label">
+                                I agree to the Terms of Service and Privacy Policy
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="register-btn primary">
+                        <span class="btn-icon">🔗</span>
+                        <span class="btn-text">Create Digital Tourist ID</span>
+                    </button>
+                </form>
+
+                <!-- Registration Progress -->
+                <div id="registration-progress" class="progress-container hidden">
+                    <h3>🔗 Creating Your Digital Identity...</h3>
+                    <div class="progress-steps">
+                        <div class="progress-step active">📋 Verifying Information</div>
+                        <div class="progress-step">🔒 Creating Blockchain Entry</div>
+                        <div class="progress-step">🆔 Generating Digital ID</div>
+                        <div class="progress-step">✅ Account Created</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Success Screen -->
+                <div id="registration-success" class="success-container hidden">
+                    <div class="success-icon">✅</div>
+                    <h3>Digital Tourist ID Created Successfully!</h3>
+                    <div class="digital-id-card">
+                        <div class="id-header">
+                            <h4>🏔 NORTHEAST INDIA TOURIST ID</h4>
+                            <div class="id-number">ID: <span id="generated-id"></span></div>
+                        </div>
+                        <div class="id-body">
+                            <div class="tourist-info">
+                                <p><strong>Name:</strong> <span id="display-name"></span></p>
+                                <p><strong>Username:</strong> <span id="display-username"></span></p>
+                                <p><strong>Valid Until:</strong> <span id="display-validity"></span></p>
+                                <p><strong>Safety Score:</strong> <span class="safety-score">95/100</span></p>
+                            </div>
+                            <div class="qr-code">📱</div>
+                        </div>
+                        <div class="id-footer">
+                            <small>Blockchain Verified • AI Monitored • Geo-Protected</small>
+                        </div>
+                    </div>
+                    <button id="proceed-to-dashboard" class="success-btn primary">
+                        <span class="btn-icon">🏠</span>
+                        <span class="btn-text">Access Dashboard</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Load JavaScript -->
-    <script src="enhanced-main.js"></script>
+    <!-- Status Bar -->
+    <div id="status-bar" class="status-bar hidden">
+        <div class="status-item">
+            <span class="status-icon">🔒</span>
+            <span class="status-text">Secure Connection</span>
+        </div>
+        <div class="status-item">
+            <span class="status-icon">🌐</span>
+            <span class="status-text" id="connection-status">Online</span>
+        </div>
+        <div class="status-item">
+            <span class="status-icon">🕒</span>
+            <span class="status-text" id="current-time"></span>
+        </div>
+    </div>
+
+    <!-- Load Scripts -->
+    <script src="main.js"></script>
     <script src="utils.js"></script>
 </body>
 </html>
