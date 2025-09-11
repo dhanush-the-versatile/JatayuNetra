@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JatayuNetra - Smart Tourist Safety Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header" style="display: none;">
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="logo">🦅 JatayuNetra</h1>
+            </div>
+            <div class="header-center">
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="dashboard" data-i18n="dashboard">Dashboard</button>
+                    <button class="nav-btn" data-section="tourist-id" data-i18n="tourist-id">Tourist ID</button>
+                    <button class="nav-btn" data-section="geo-fencing" data-i18n="geo-fencing">Geo-Fencing</button>
+                    <button class="nav-btn" data-section="ai-monitoring" data-i18n="ai-monitoring">AI Monitoring</button>
+                    <button class="nav-btn" data-section="services" data-i18n="services">Services</button>
+                </nav>
+            </div>
+            <div class="header-right">
+                <select id="language-selector" class="form-control">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="ta">தமிழ்</option>
+                    <option value="bn">বাংলা</option>
+                </select>
+                <button id="theme-toggle" class="btn btn--outline">🌙</button>
+                <button id="sos-button" class="btn btn--primary sos-btn" data-i18n="emergency">🚨 SOS</button>
+                <button id="logout-btn" class="btn btn--outline" data-i18n="logout">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Page -->
+    <section id="login-section" class="section active">
+        <div class="login-container">
+            <div class="login-card card">
+                <div class="login-header">
+                    <h1 class="logo-large">🦅 JatayuNetra</h1>
+                    <p class="tagline" data-i18n="tagline">Smart Tourist Safety Monitoring & Incident Response System</p>
+                </div>
+                <div class="card__body">
+                    <form id="login-form" class="login-form">
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="username">Username</label>
+                            <input type="text" id="username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-i18n="password">Password</label>
+                            <input type="password" id="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width" data-i18n="login">Login</button>
+                    </form>
+                    <div class="demo-credentials">
+                        <p><strong>Demo Credentials:</strong></p>
+                        <p>Username: admin | Password: admin123</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard-section" class="section">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2 data-i18n="dashboard">Dashboard</h2>
+                <div class="current-status">
+                    <span class="status status--success" data-i18n="online">Online</span>
+                    <span class="location-display" id="current-location">📍 Detecting location...</span>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <h3 id="total-tourists">247</h3>
+                            <p data-i18n="active-tourists">Active Tourists</p>
+                        </div>
+                    </div>
+                    <div class="stat-card card">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-content">
+                            <h3 id="active-alerts">3</h3>
+                            <p data-i18n="active-alerts">Active Alerts</p>
+                        </div>
+                    </div>
+                    <div class="stat-card card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3 id="safety-score">92%</h3>
+                            <p data-i18n="safety-score">Safety Score</p>
+                        </div>
+                    </div>
+                    <div class="stat-card card">
+                        <div class="stat-icon">🛡️</div>
+                        <div class="stat-content">
+                            <h3 id="secure-zones">15</h3>
+                            <p data-i18n="secure-zones">Secure Zones</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Monitoring -->
+                <div class="monitoring-panel card">
+                    <h3 data-i18n="real-time-monitoring">Real-time Monitoring</h3>
+                    <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="monitoring-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Location-based Recommendations -->
+                <div class="recommendations-panel card">
+                    <h3 data-i18n="nearby-services">Nearby Services</h3>
+                    <div id="service-recommendations" class="service-list">
+                        <!-- Services will be populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Recent Activities -->
+                <div class="activities-panel card">
+                    <h3 data-i18n="recent-activities">Recent Activities</h3>
+                    <div id="activity-feed" class="activity-list">
+                        <!-- Activities will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tourist ID Generation Section -->
+    <section id="tourist-id-section" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="digital-tourist-id">Digital Tourist ID Generation</h2>
+                <p data-i18n="id-description">Generate secure blockchain-based digital identification for tourists</p>
+            </div>
+            
+            <div class="id-generation-grid">
+                <div class="id-form-panel card">
+                    <div class="card__body">
+                        <form id="tourist-id-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" data-i18n="full-name">Full Name</label>
+                                    <input type="text" id="tourist-name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" data-i18n="age">Age</label>
+                                    <input type="number" id="tourist-age" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" data-i18n="nationality">Nationality</label>
+                                    <input type="text" id="tourist-nationality" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" data-i18n="id-type">ID Type</label>
+                                    <select id="id-type" class="form-control" required>
+                                        <option value="aadhar">Aadhar Card</option>
+                                        <option value="passport">Passport</option>
+                                        <option value="license">Driving License</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="id-number">ID Number</label>
+                                <input type="text" id="id-number" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" data-i18n="trip-duration">Trip Duration (Days)</label>
+                                    <input type="number" id="trip-duration" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" data-i18n="travel-purpose">Travel Purpose</label>
+                                    <select id="travel-purpose" class="form-control">
+                                        <option value="tourism">Tourism</option>
+                                        <option value="business">Business</option>
+                                        <option value="family">Family Visit</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" data-i18n="emergency-contact">Emergency Contact</label>
+                                <input type="tel" id="emergency-contact" class="form-control" required>
+                            </div>
+                            
+                            <button type="submit" class="btn btn--primary btn--full-width" data-i18n="generate-id">Generate Digital ID</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="id-preview-panel card">
+                    <div class="card__body">
+                        <h3 data-i18n="id-preview">ID Preview</h3>
+                        <div id="generated-id" class="digital-id" style="display: none;">
+                            <div class="id-header">
+                                <span class="id-logo">🦅 JatayuNetra</span>
+                                <span class="id-blockchain">⛓️ Blockchain Secured</span>
+                            </div>
+                            <div class="id-content">
+                                <div class="id-photo">👤</div>
+                                <div class="id-details">
+                                    <p><strong data-i18n="name">Name:</strong> <span id="preview-name"></span></p>
+                                    <p><strong data-i18n="id">ID:</strong> <span id="preview-id"></span></p>
+                                    <p><strong data-i18n="validity">Valid Until:</strong> <span id="preview-validity"></span></p>
+                                    <p><strong data-i18n="qr-code">QR Code:</strong> <span class="qr-placeholder">▣▣▣▣</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Geo-fencing Section -->
+    <section id="geo-fencing-section" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="geo-fencing">Geo-Fencing & Zone Management</h2>
+                <p data-i18n="geo-description">Monitor safe and restricted zones with real-time alerts</p>
+            </div>
+            
+            <div class="geo-grid">
+                <div class="map-panel card">
+                    <div class="card__body">
+                        <div id="geo-map" class="geo-map">
+                            <div class="map-placeholder">
+                                🗺️ Interactive Map<br>
+                                <span class="map-legend">
+                                    🟢 Safe Zones | 🟡 Caution Areas | 🔴 Restricted Zones
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="zone-controls card">
+                    <div class="card__body">
+                        <h3 data-i18n="zone-management">Zone Management</h3>
+                        <div class="zone-list">
+                            <div class="zone-item safe">
+                                <span class="zone-indicator"></span>
+                                <span data-i18n="tourist-spots">Tourist Spots</span>
+                                <span class="zone-count">12</span>
+                            </div>
+                            <div class="zone-item caution">
+                                <span class="zone-indicator"></span>
+                                <span data-i18n="caution-areas">Caution Areas</span>
+                                <span class="zone-count">5</span>
+                            </div>
+                            <div class="zone-item restricted">
+                                <span class="zone-indicator"></span>
+                                <span data-i18n="restricted-zones">Restricted Zones</span>
+                                <span class="zone-count">3</span>
+                            </div>
+                        </div>
+                        
+                        <div class="alert-settings">
+                            <h4 data-i18n="alert-settings">Alert Settings</h4>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="entry-alerts" checked>
+                                <span data-i18n="zone-entry-alerts">Zone Entry Alerts</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="exit-alerts" checked>
+                                <span data-i18n="zone-exit-alerts">Zone Exit Alerts</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="proximity-alerts">
+                                <span data-i18n="proximity-alerts">Proximity Alerts</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Monitoring Section -->
+    <section id="ai-monitoring-section" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="ai-anomaly-detection">AI Anomaly Detection</h2>
+                <p data-i18n="ai-description">Real-time behavior analysis and predictive alerts</p>
+            </div>
+            
+            <div class="ai-grid">
+                <div class="anomaly-chart card">
+                    <div class="card__body">
+                        <h3 data-i18n="detection-patterns">Detection Patterns</h3>
+                        <div class="chart-container" style="position: relative; height: 250px;">
+                            <canvas id="anomaly-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert-panel card">
+                    <div class="card__body">
+                        <h3 data-i18n="active-anomalies">Active Anomalies</h3>
+                        <div id="anomaly-alerts" class="alert-list">
+                            <!-- Alerts will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ai-settings card">
+                    <div class="card__body">
+                        <h3 data-i18n="detection-settings">Detection Settings</h3>
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <label data-i18n="speed-threshold">Speed Drop Threshold</label>
+                                <input type="range" id="speed-threshold" min="10" max="50" value="30">
+                                <span id="speed-value">30 km/h</span>
+                            </div>
+                            <div class="setting-item">
+                                <label data-i18n="inactivity-threshold">Inactivity Time</label>
+                                <input type="range" id="inactivity-threshold" min="60" max="600" value="300">
+                                <span id="inactivity-value">5 min</span>
+                            </div>
+                            <div class="setting-item">
+                                <label data-i18n="deviation-threshold">Route Deviation</label>
+                                <input type="range" id="deviation-threshold" min="100" max="1000" value="500">
+                                <span id="deviation-value">500m</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services-section" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="emergency-services">Emergency Services</h2>
+                <p data-i18n="services-description">Quick access to nearby emergency services and assistance</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-category">
+                    <h3 data-i18n="medical-services">🏥 Medical Services</h3>
+                    <div id="medical-services" class="service-cards">
+                        <!-- Medical services will be populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="service-category">
+                    <h3 data-i18n="police-services">🚔 Police Services</h3>
+                    <div id="police-services" class="service-cards">
+                        <!-- Police services will be populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="service-category">
+                    <h3 data-i18n="other-services">🔧 Other Services</h3>
+                    <div id="other-services" class="service-cards">
+                        <!-- Other services will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOS Modal -->
+    <div id="sos-modal" class="modal hidden">
+        <div class="modal-content card">
+            <div class="modal-header">
+                <h2 data-i18n="emergency-alert">🚨 EMERGENCY ALERT</h2>
+            </div>
+            <div class="modal-body">
+                <div class="sos-status">
+                    <p class="sos-message" data-i18n="sos-activated">SOS has been activated. Help is on the way!</p>
+                    <div class="location-sharing">
+                        <p data-i18n="location-shared">📍 Location shared with:</p>
+                        <ul>
+                            <li data-i18n="nearest-police">Nearest Police Station</li>
+                            <li data-i18n="emergency-contacts">Emergency Contacts</li>
+                            <li data-i18n="tourism-dept">Tourism Department</li>
+                        </ul>
+                    </div>
+                    <div class="countdown">
+                        <p data-i18n="response-time">Expected response time: <span id="response-countdown">5:00</span></p>
+                    </div>
+                </div>
+                <div class="sos-actions">
+                    <button id="cancel-sos" class="btn btn--outline" data-i18n="cancel-sos">Cancel SOS</button>
+                    <button id="call-emergency" class="btn btn--primary" data-i18n="call-emergency">📞 Call Emergency</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
