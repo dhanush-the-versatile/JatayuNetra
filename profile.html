@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Smart Tourist Safety</title>
+    <link rel="stylesheet" href="enhanced-styles.css">
+    <meta name="theme-color" content="#1e3a8a">
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="header-content">
+                <div class="back-button" onclick="goBackToDashboard()">
+                    <span>← Back to Dashboard</span>
+                </div>
+                <h1>👤 Tourist Profile</h1>
+                <p>Digital Identity & Safety Management</p>
+            </div>
+        </div>
+
+        <!-- Enhanced User Summary -->
+        <div class="user-summary-card">
+            <div class="profile-avatar">
+                <div class="avatar-placeholder">🧳</div>
+                <div class="verification-badge">✅</div>
+            </div>
+            <div class="user-details">
+                <h2 id="user-name">Rajesh Kumar</h2>
+                <p class="user-title">Digital Tourist • Northeast India</p>
+                <div class="user-id">ID: <span id="digital-tourist-id">TST-AS-2025-001234</span></div>
+                <div class="user-meta">
+                    <span class="meta-item">📍 Currently in: Guwahati, Assam</span>
+                    <span class="meta-item">📅 Member since: June 2025</span>
+                    <span class="meta-item">🛡️ Safety Score: <span id="profile-safety-score">95/100</span></span>
+                </div>
+            </div>
+            <div class="quick-stats">
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Locations Visited</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Safety Incidents</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Emergency Contacts</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Days Remaining</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="showTab('personal-info')">
+                📋 Personal Information
+            </button>
+            <button class="tab-btn" onclick="showTab('digital-id')">
+                🆔 Digital ID Card
+            </button>
+            <button class="tab-btn" onclick="showTab('trip-details')">
+                🗺️ Trip Details
+            </button>
+            <button class="tab-btn" onclick="showTab('emergency-contacts')">
+                📞 Emergency Contacts
+            </button>
+            <button class="tab-btn" onclick="showTab('travel-history')">
+                📍 Travel History
+            </button>
+            <button class="tab-btn" onclick="showTab('safety-settings')">
+                🛡️ Safety Settings
+            </button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="tab-container">
+            <!-- Personal Information Tab -->
+            <div id="personal-info" class="tab-content active">
+                <div class="content-header">
+                    <h3>📋 Personal Information</h3>
+                    <button class="edit-btn" onclick="enableEditing('personal')">✏️ Edit</button>
+                </div>
+                
+                <form id="personal-info-form" class="profile-form">
+                    <div class="form-section">
+                        <h4>Basic Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" class="form-control" value="Rajesh Kumar" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" class="form-control" value="28" disabled>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" class="form-control" disabled>
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality">Nationality</label>
+                                <input type="text" id="nationality" class="form-control" value="Indian" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Contact Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="mobile-number">Mobile Number</label>
+                                <input type="tel" id="mobile-number" class="form-control" value="+91-9876543210" disabled>
+                                <div class="verification-status verified">✅ Verified via OTP</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-address">Email Address</label>
+                                <input type="email" id="email-address" class="form-control" value="rajesh.kumar@email.com" disabled>
+                                <div class="verification-status verified">✅ Verified</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Home Address</label>
+                            <textarea id="address" class="form-control" rows="3" disabled>123 Main Street, Vizianagaram, Andhra Pradesh, India - 535001</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Identity Documents</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="id-type">ID Type</label>
+                                <select id="id-type" class="form-control" disabled>
+                                    <option value="aadhaar" selected>Aadhaar Card</option>
+                                    <option value="passport">Passport</option>
+                                    <option value="driving-license">Driving License</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="id-number">ID Number</label>
+                                <input type="text" id="id-number" class="form-control" value="XXXX-XXXX-1234" disabled>
+                                <div class="verification-status verified">✅ Verified via Government Database</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions hidden" id="personal-actions">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" onclick="cancelEditing('personal')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Digital ID Card Tab -->
+            <div id="digital-id" class="tab-content">
+                <div class="content-header">
+                    <h3>🆔 Digital Tourist ID Card</h3>
+                    <button class="download-btn" onclick="downloadDigitalID()">📱 Download QR Code</button>
+                </div>
+
+                <div class="digital-id-showcase">
+                    <div class="id-card-3d">
+                        <div class="id-card-front">
+                            <div class="card-header">
+                                <div class="card-logo">🏔️</div>
+                                <div class="card-title">
+                                    <h4>NORTHEAST INDIA</h4>
+                                    <h5>DIGITAL TOURIST ID</h5>
+                                </div>
+                                <div class="blockchain-indicator">
+                                    <span class="blockchain-icon">🔗</span>
+                                    <span class="blockchain-text">Blockchain Secured</span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-body">
+                                <div class="tourist-photo">
+                                    <div class="photo-placeholder">📸</div>
+                                </div>
+                                <div class="tourist-details">
+                                    <h3 id="card-name">Rajesh Kumar</h3>
+                                    <div class="detail-row">
+                                        <span class="detail-label">ID:</span>
+                                        <span class="detail-value" id="card-id">TST-AS-2025-001234</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Valid Until:</span>
+                                        <span class="detail-value" id="card-validity">2025-09-18</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Safety Score:</span>
+                                        <span class="detail-value safety-high">95/100</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">State Access:</span>
+                                        <span class="detail-value">All Northeast States</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-footer">
+                                <div class="qr-code-section">
+                                    <div class="qr-code-placeholder">📱</div>
+                                    <span class="qr-label">Scan for Verification</span>
+                                </div>
+                                <div class="security-features">
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🤖</span>
+                                        <span class="feature-text">AI Monitored</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">🗺️</span>
+                                        <span class="feature-text">Geo-Protected</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <span class="feature-icon">⌚</span>
+                                        <span class="feature-text">IoT Ready</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="id-card-back">
+                            <div class="card-back-header">
+                                <h4>Emergency Information</h4>
+                            </div>
+                            <div class="emergency-contacts-summary">
+                                <div class="contact-item">
+                                    <strong>Primary Contact:</strong>
+                                    <span>Priya Kumar - +91-9876543250</span>
+                                </div>
+                                <div class="contact-item">
+                                    <strong>Medical Contact:</strong>
+                                    <span>Dr. Sharma - +91-9876543251</span>
+                                </div>
+                            </div>
+                            <div class="blockchain-info">
+                                <h5>Blockchain Verification</h5>
+                                <div class="blockchain-hash">
+                                    <span class="hash-label">Hash:</span>
+                                    <span class="hash-value">0x7d2f8a3b9c1e5f4a...</span>
+                                </div>
+                                <div class="blockchain-block">
+                                    <span class="block-label">Block:</span>
+                                    <span class="block-value">#2,847,563</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="id-verification-status">
+                    <h4>🔒 Verification Status</h4>
+                    <div class="verification-grid">
+                        <div class="verification-item verified">
+                            <span class="verification-icon">✅</span>
+                            <span class="verification-text">Government Database</span>
+                        </div>
+                        <div class="verification-item verified">
+                            <span class="verification-icon">✅</span>
+                            <span class="verification-text">Blockchain Network</span>
+                        </div>
+                        <div class="verification-item verified">
+                            <span class="verification-icon">✅</span>
+                            <span class="verification-text">Mobile Number</span>
+                        </div>
+                        <div class="verification-item verified">
+                            <span class="verification-icon">✅</span>
+                            <span class="verification-text">Email Address</span>
+                        </div>
+                        <div class="verification-item pending">
+                            <span class="verification-icon">⏳</span>
+                            <span class="verification-text">Biometric (Optional)</span>
+                        </div>
+                        <div class="verification-item verified">
+                            <span class="verification-icon">✅</span>
+                            <span class="verification-text">Emergency Contacts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trip Details Tab -->
+            <div id="trip-details" class="tab-content">
+                <div class="content-header">
+                    <h3>🗺️ Trip Details & Itinerary</h3>
+                    <button class="edit-btn" onclick="enableEditing('trip')">✏️ Edit Itinerary</button>
+                </div>
+
+                <form id="trip-details-form" class="profile-form">
+                    <div class="form-section">
+                        <h4>Trip Overview</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="arrival-date">Arrival Date</label>
+                                <input type="date" id="arrival-date" class="form-control" value="2025-09-11" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="departure-date">Departure Date</label>
+                                <input type="date" id="departure-date" class="form-control" value="2025-09-18" disabled>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="duration">Trip Duration</label>
+                                <input type="text" id="duration" class="form-control" value="7 Days" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="primary-state">Primary State</label>
+                                <select id="primary-state" class="form-control" disabled>
+                                    <option value="assam" selected>Assam</option>
+                                    <option value="meghalaya">Meghalaya</option>
+                                    <option value="sikkim">Sikkim</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Planned Itinerary</h4>
+                        <div class="itinerary-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker">📍</div>
+                                <div class="timeline-content">
+                                    <h5>Day 1-2: Guwahati, Assam</h5>
+                                    <p>Arrival, city exploration, Kamakhya Temple</p>
+                                    <span class="timeline-date">Sep 11-12, 2025</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">🏔️</div>
+                                <div class="timeline-content">
+                                    <h5>Day 3-4: Shillong, Meghalaya</h5>
+                                    <p>Scotland of the East, waterfalls, local culture</p>
+                                    <span class="timeline-date">Sep 13-14, 2025</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">⛰️</div>
+                                <div class="timeline-content">
+                                    <h5>Day 5-6: Gangtok, Sikkim</h5>
+                                    <p>Mountain views, monasteries, local markets</p>
+                                    <span class="timeline-date">Sep 15-16, 2025</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">✈️</div>
+                                <div class="timeline-content">
+                                    <h5>Day 7: Return Journey</h5>
+                                    <p>Return to Guwahati, departure</p>
+                                    <span class="timeline-date">Sep 17-18, 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Travel Preferences</h4>
+                        <div class="preferences-grid">
+                            <div class="preference-item">
+                                <input type="checkbox" id="guided-tour" checked disabled>
+                                <label for="guided-tour">Guided Tour (+10 Safety Points)</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="group-travel" checked disabled>
+                                <label for="group-travel">Group Travel (+5 Safety Points)</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="verified-accommodation" checked disabled>
+                                <label for="verified-accommodation">Verified Accommodation (+5 Safety Points)</label>
+                            </div>
+                            <div class="preference-item">
+                                <input type="checkbox" id="registered-transport" checked disabled>
+                                <label for="registered-transport">Registered Transport (+10 Safety Points)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions hidden" id="trip-actions">
+                        <button type="submit" class="btn btn-primary">Update Itinerary</button>
+                        <button type="button" class="btn btn-secondary" onclick="cancelEditing('trip')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Emergency Contacts Tab -->
+            <div id="emergency-contacts" class="tab-content">
+                <div class="content-header">
+                    <h3>📞 Emergency Contacts</h3>
+                    <button class="add-btn" onclick="showAddContactModal()">➕ Add Contact</button>
+                </div>
+
+                <div class="contacts-list">
+                    <div class="contact-card primary">
+                        <div class="contact-header">
+                            <div class="contact-avatar">👩</div>
+                            <div class="contact-info">
+                                <h4>Priya Kumar</h4>
+                                <p class="contact-relation">Family Member (Wife)</p>
+                                <p class="contact-phone">+91-9876543250</p>
+                                <p class="contact-email">priya@email.com</p>
+                            </div>
+                            <div class="contact-priority primary">
+                                <span class="priority-badge">PRIMARY</span>
+                                <span class="priority-text">Will be contacted first</span>
+                            </div>
+                        </div>
+                        <div class="contact-actions">
+                            <button class="btn-contact call" onclick="testContact('+91-9876543250')">📞 Test Call</button>
+                            <button class="btn-contact edit" onclick="editContact('1')">✏️ Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="contact-card medical">
+                        <div class="contact-header">
+                            <div class="contact-avatar">👨‍⚕️</div>
+                            <div class="contact-info">
+                                <h4>Dr. Ramesh Sharma</h4>
+                                <p class="contact-relation">Medical Contact</p>
+                                <p class="contact-phone">+91-9876543251</p>
+                                <p class="contact-email">sharma@hospital.com</p>
+                            </div>
+                            <div class="contact-priority medical">
+                                <span class="priority-badge">MEDICAL</span>
+                                <span class="priority-text">Medical emergencies</span>
+                            </div>
+                        </div>
+                        <div class="contact-actions">
+                            <button class="btn-contact call" onclick="testContact('+91-9876543251')">📞 Test Call</button>
+                            <button class="btn-contact edit" onclick="editContact('2')">✏️ Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="contact-card insurance">
+                        <div class="contact-header">
+                            <div class="contact-avatar">🏛️</div>
+                            <div class="contact-info">
+                                <h4>HDFC Travel Insurance</h4>
+                                <p class="contact-relation">Insurance Provider</p>
+                                <p class="contact-phone">+91-9876543252</p>
+                                <p class="contact-email">claims@hdfc.com</p>
+                            </div>
+                            <div class="contact-priority insurance">
+                                <span class="priority-badge">INSURANCE</span>
+                                <span class="priority-text">Claims & assistance</span>
+                            </div>
+                        </div>
+                        <div class="contact-actions">
+                            <button class="btn-contact call" onclick="testContact('+91-9876543252')">📞 Test Call</button>
+                            <button class="btn-contact edit" onclick="editContact('3')">✏️ Edit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emergency-testing">
+                    <h4>🧪 Emergency Contact Testing</h4>
+                    <p>Last tested: 2 days ago • All contacts reachable</p>
+                    <button class="btn btn-primary" onclick="testAllContacts()">Test All Contacts</button>
+                </div>
+            </div>
+
+            <!-- Travel History Tab -->
+            <div id="travel-history" class="tab-content">
+                <div class="content-header">
+                    <h3>📍 Travel History & Location Log</h3>
+                    <button class="export-btn" onclick="exportTravelHistory()">📊 Export Data</button>
+                </div>
+
+                <div class="travel-stats-summary">
+                    <div class="stat-card">
+                        <div class="stat-icon">📍</div>
+                        <div class="stat-info">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Locations Visited</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🛣️</div>
+                        <div class="stat-info">
+                            <span class="stat-number">847 km</span>
+                            <span class="stat-label">Distance Traveled</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏔️</div>
+                        <div class="stat-info">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">States Covered</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-info">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Safety Incidents</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="travel-timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker">✅</div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h5>Guwahati Airport Arrival</h5>
+                                <span class="timeline-time">2025-09-11 10:30 AM</span>
+                            </div>
+                            <p>Digital ID activated, safety systems online</p>
+                            <div class="timeline-details">
+                                <span class="detail-item">📍 26.1061° N, 91.5856° E</span>
+                                <span class="detail-item">🛡️ Safety Score: 100</span>
+                                <span class="detail-item">⏱️ Duration: 45 mins</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item current">
+                        <div class="timeline-marker current">📍</div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h5>Guwahati City Center</h5>
+                                <span class="timeline-time">Current Location</span>
+                            </div>
+                            <p>Exploring local markets and cultural sites</p>
+                            <div class="timeline-details">
+                                <span class="detail-item">📍 26.1445° N, 91.7362° E</span>
+                                <span class="detail-item">🛡️ Safety Score: 95</span>
+                                <span class="detail-item">⏱️ Duration: 2 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item planned">
+                        <div class="timeline-marker planned">⏳</div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h5>Shillong, Meghalaya</h5>
+                                <span class="timeline-time">Planned: Sep 13</span>
+                            </div>
+                            <p>Next destination in itinerary</p>
+                            <div class="timeline-details">
+                                <span class="detail-item">📍 25.5788° N, 91.8933° E</span>
+                                <span class="detail-item">🛡️ Expected Score: 90+</span>
+                                <span class="detail-item">⏱️ Planned Duration: 2 days</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-insights">
+                    <h4>🎯 AI Travel Insights</h4>
+                    <div class="insights-grid">
+                        <div class="insight-item">
+                            <span class="insight-icon">📊</span>
+                            <span class="insight-text">You've maintained excellent safety scores throughout your journey</span>
+                        </div>
+                        <div class="insight-item">
+                            <span class="insight-icon">🗺️</span>
+                            <span class="insight-text">Your route follows optimal tourist circuits with good connectivity</span>
+                        </div>
+                        <div class="insight-item">
+                            <span class="insight-icon">⏰</span>
+                            <span class="insight-text">Average time at each location: 1.8 days (recommended: 2-3 days)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety Settings Tab -->
+            <div id="safety-settings" class="tab-content">
+                <div class="content-header">
+                    <h3>🛡️ Safety & Privacy Settings</h3>
+                    <div class="settings-status">
+                        <span class="status-indicator active"></span>
+                        <span>All Safety Systems Active</span>
+                    </div>
+                </div>
+
+                <div class="settings-sections">
+                    <div class="settings-section">
+                        <h4>🤖 AI Monitoring Settings</h4>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>Behavioral Analysis</strong>
+                                <p>AI monitors your movement patterns for anomalies</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>Route Deviation Alerts</strong>
+                                <p>Alert authorities if you deviate significantly from planned route</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>Prolonged Inactivity Detection</strong>
+                                <p>Trigger alerts if no movement detected for extended periods</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <select class="setting-dropdown">
+                                    <option value="1">1 hour</option>
+                                    <option value="2">2 hours</option>
+                                    <option value="3" selected>3 hours</option>
+                                    <option value="6">6 hours</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h4>🗺️ Geo-Fencing & Location</h4>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>High-Risk Zone Alerts</strong>
+                                <p>Receive warnings when entering dangerous areas</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>Restricted Zone Notifications</strong>
+                                <p>Alert when entering areas requiring special permits</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>Location Sharing</strong>
+                                <p>Share real-time location with family and authorities</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <select class="setting-dropdown">
+                                    <option value="family">Family Only</option>
+                                    <option value="authorities">Authorities Only</option>
+                                    <option value="both" selected>Family + Authorities</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h4>📱 Notifications & Alerts</h4>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>Push Notifications</strong>
+                                <p>Receive app notifications for safety updates</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>SMS Alerts</strong>
+                                <p>Get SMS alerts for critical safety warnings</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>Email Summaries</strong>
+                                <p>Daily email summaries of your travel activity</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h4>🔒 Privacy & Data Control</h4>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>Data Encryption</strong>
+                                <p>All personal data encrypted with blockchain security</p>
+                            </div>
+                            <div class="setting-control">
+                                <span class="setting-status enabled">✅ Always Enabled</span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>Automatic Data Deletion</strong>
+                                <p>Delete all travel data after trip completion</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <select class="setting-dropdown">
+                                    <option value="immediate">Immediate</option>
+                                    <option value="7days">7 days after</option>
+                                    <option value="30days" selected>30 days after</option>
+                                    <option value="1year">1 year after</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <strong>Third-party Data Sharing</strong>
+                                <p>Allow sharing anonymized data with tourism research</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h4>⌚ IoT Device Management</h4>
+                        <div class="connected-devices">
+                            <div class="device-item">
+                                <div class="device-info">
+                                    <span class="device-icon">📱</span>
+                                    <span class="device-name">Mobile Safety App</span>
+                                    <span class="device-status connected">Connected</span>
+                                </div>
+                                <div class="device-controls">
+                                    <button class="btn-device">Configure</button>
+                                </div>
+                            </div>
+                            <div class="device-item">
+                                <div class="device-info">
+                                    <span class="device-icon">⌚</span>
+                                    <span class="device-name">Northeast Safety Band</span>
+                                    <span class="device-status connected">Connected</span>
+                                </div>
+                                <div class="device-controls">
+                                    <button class="btn-device">Configure</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline" onclick="showDeviceSetup()">➕ Add New Device</button>
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button class="btn btn-primary" onclick="saveSettings()">💾 Save All Settings</button>
+                    <button class="btn btn-secondary" onclick="resetToDefaults()">🔄 Reset to Defaults</button>
+                    <button class="btn btn-danger" onclick="deleteAllData()">🗑️ Delete All Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating SOS Button -->
+    <div class="sos-container">
+        <button id="sos-button" class="sos-button" onclick="activateEmergencySOS()">
+            <div class="sos-pulse"></div>
+            <div class="sos-content">
+                <div class="sos-text">SOS</div>
+                <div class="sos-subtext">Emergency</div>
+            </div>
+        </button>
+    </div>
+
+    <script src="enhanced-main.js"></script>
+    <script src="utils.js"></script>
+</body>
+</html>

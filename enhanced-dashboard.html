@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Smart Tourist Safety</title>
+    <link rel="stylesheet" href="enhanced-styles.css">
+    <meta name="theme-color" content="#1e3a8a">
+</head>
+<body>
+    <div id="tourist-dashboard" class="dashboard-container">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="app-logo-small">🏔️</div>
+                    <div class="header-text">
+                        <h1>Smart Tourist Safety</h1>
+                        <p>Northeast India Monitoring System</p>
+                    </div>
+                </div>
+                <div class="user-section">
+                    <div class="greeting-container">
+                        <div id="time-greeting" class="time-greeting">Good Morning!</div>
+                        <div id="user-greeting" class="user-greeting">Welcome, Tourist</div>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tourist Status Bar -->
+        <div class="tourist-status-bar">
+            <div class="status-item">
+                <div class="status-icon">🆔</div>
+                <div class="status-info">
+                    <span class="status-label">Digital ID</span>
+                    <span class="status-value" id="user-digital-id">TST-AS-2025-001234</span>
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon">📍</div>
+                <div class="status-info">
+                    <span class="status-label">Current Zone</span>
+                    <span class="status-value">Safe Zone - Guwahati</span>
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon">🤖</div>
+                <div class="status-info">
+                    <span class="status-label">AI Monitor</span>
+                    <span class="status-value">Active - Normal Behavior</span>
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon">🔗</div>
+                <div class="status-info">
+                    <span class="status-label">Blockchain</span>
+                    <span class="status-value">127 Nodes Connected</span>
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon">⌚</div>
+                <div class="status-info">
+                    <span class="status-label">IoT Devices</span>
+                    <span class="status-value">2 Connected</span>
+                </div>
+            </div>
+            <div class="status-item urgent">
+                <div class="status-icon">🚨</div>
+                <div class="status-info">
+                    <span class="status-label">Emergency Response</span>
+                    <span class="status-value">< 3 mins</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-main">
+            <!-- Welcome Section -->
+            <div class="welcome-card">
+                <h2>🏔️ Welcome to Northeast India</h2>
+                <p>Your digital tourist identity is secured with blockchain technology, monitored by AI systems, and protected by geo-fencing across all 8 northeastern states. Enjoy safe travels!</p>
+                
+                <!-- Live Safety Score -->
+                <div class="safety-score-showcase">
+                    <div class="score-container">
+                        <div class="score-circle high-score">
+                            <div class="score-number" id="current-safety-score">95</div>
+                            <div class="score-label">Safety Score</div>
+                        </div>
+                        <div class="score-details">
+                            <div class="score-factors">
+                                <div class="factor positive">✅ Safe Zone Location</div>
+                                <div class="factor positive">✅ Normal AI Behavior Pattern</div>
+                                <div class="factor positive">✅ All IoT Devices Connected</div>
+                                <div class="factor positive">✅ Emergency Contacts Verified</div>
+                                <div class="factor neutral">⚠️ Weather: Monsoon Season</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Insights Panel -->
+            <div class="insights-panel">
+                <h3>🤖 AI-Powered Travel Insights</h3>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <div class="insight-icon">📊</div>
+                        <div class="insight-content">
+                            <h4>Travel Pattern Analysis</h4>
+                            <p>Your movement pattern matches <strong>cultural tourism</strong> with focus on heritage sites and local experiences.</p>
+                            <div class="insight-metric">Confidence: 94%</div>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">🗺️</div>
+                        <div class="insight-content">
+                            <h4>Route Optimization</h4>
+                            <p>Based on weather and local conditions, your planned route is <strong>optimal</strong> for the next 3 days.</p>
+                            <div class="insight-metric">Weather Impact: Low</div>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">⚠️</div>
+                        <div class="insight-content">
+                            <h4>Risk Assessment</h4>
+                            <p>Current region has <strong>low risk</strong> with established tourism infrastructure and good connectivity.</p>
+                            <div class="insight-metric">Risk Level: 15/100</div>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">🌧️</div>
+                        <div class="insight-content">
+                            <h4>Weather Advisory</h4>
+                            <p>Moderate rainfall expected. <strong>Indoor activities</strong> recommended for tomorrow afternoon.</p>
+                            <div class="insight-metric">Confidence: 78%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Emergency Services Card -->
+                <div class="dashboard-card emergency-card" onclick="navigateTo('services.html')">
+                    <div class="card-icon emergency-icon">🚨</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Emergency Services</h3>
+                        <p class="card-description">24/7 emergency response, medical assistance, police support, and tourism help across Northeast India</p>
+                        <div class="card-stats">
+                            <span class="stat-item">Police: < 3 min</span>
+                            <span class="stat-item">Medical: < 5 min</span>
+                        </div>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- Location Tracking Card -->
+                <div class="dashboard-card location-card">
+                    <div class="card-icon location-icon">📍</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Live Location Tracking</h3>
+                        <p class="card-description">Real-time GPS tracking with geo-fencing alerts and zone-based safety recommendations</p>
+                        <div class="location-details">
+                            <div class="location-item">
+                                <strong>Current:</strong> Guwahati, Assam
+                            </div>
+                            <div class="location-item">
+                                <strong>Zone:</strong> Safe Tourist Area
+                            </div>
+                            <div class="location-item">
+                                <strong>Updated:</strong> <span id="location-update-time">Now</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Monitoring Card -->
+                <div class="dashboard-card ai-card">
+                    <div class="card-icon ai-icon">🤖</div>
+                    <div class="card-content">
+                        <h3 class="card-title">AI Safety Monitoring</h3>
+                        <p class="card-description">Advanced behavioral analysis, anomaly detection, and predictive safety intelligence</p>
+                        <div class="ai-status">
+                            <div class="ai-metric">
+                                <span class="metric-label">Behavior Pattern:</span>
+                                <span class="metric-value normal">Normal Tourism</span>
+                            </div>
+                            <div class="ai-metric">
+                                <span class="metric-label">Anomalies:</span>
+                                <span class="metric-value safe">0 Detected</span>
+                            </div>
+                            <div class="ai-metric">
+                                <span class="metric-label">Route Confidence:</span>
+                                <span class="metric-value high">96%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blockchain Identity Card -->
+                <div class="dashboard-card blockchain-card" onclick="navigateTo('profile.html')">
+                    <div class="card-icon blockchain-icon">🔗</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Blockchain Digital ID</h3>
+                        <p class="card-description">Tamper-proof digital identity secured on distributed ledger with smart contract verification</p>
+                        <div class="blockchain-stats">
+                            <div class="blockchain-item">
+                                <strong>Block:</strong> #2,847,563
+                            </div>
+                            <div class="blockchain-item">
+                                <strong>Hash:</strong> 0x7d2f8a3b...
+                            </div>
+                            <div class="blockchain-item">
+                                <strong>Nodes:</strong> 127 verified
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- Geo-fencing Card -->
+                <div class="dashboard-card geofence-card">
+                    <div class="card-icon geofence-icon">🗺️</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Geo-fencing Protection</h3>
+                        <p class="card-description">Smart boundary detection with alerts for restricted areas, high-risk zones, and permit requirements</p>
+                        <div class="geofence-zones">
+                            <div class="zone-indicator safe">
+                                <span class="zone-dot"></span>
+                                <span class="zone-label">Safe Zone</span>
+                            </div>
+                            <div class="zone-coverage">
+                                <strong>Coverage:</strong> All 8 NE States
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IoT Integration Card -->
+                <div class="dashboard-card iot-card">
+                    <div class="card-icon iot-icon">⌚</div>
+                    <div class="card-content">
+                        <h3 class="card-title">IoT Safety Devices</h3>
+                        <p class="card-description">Connected wearables, GPS trackers, and smart sensors for enhanced safety monitoring</p>
+                        <div class="iot-devices">
+                            <div class="device-status connected">
+                                <span class="device-name">📱 Mobile App</span>
+                                <span class="device-signal">●●●●</span>
+                            </div>
+                            <div class="device-status connected">
+                                <span class="device-name">⌚ Safety Band</span>
+                                <span class="device-signal">●●●○</span>
+                            </div>
+                            <div class="device-status offline">
+                                <span class="device-name">📍 Trek Beacon</span>
+                                <span class="device-signal">○○○○</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Northeast India Specific Information -->
+            <div class="regional-info-panel">
+                <h3>🏔️ Northeast India Travel Dashboard</h3>
+                <div class="regional-grid">
+                    <div class="regional-card assam">
+                        <div class="state-header">
+                            <h4>📍 Assam</h4>
+                            <span class="current-state">Current State</span>
+                        </div>
+                        <div class="state-info">
+                            <div class="info-item">
+                                <strong>Tourism Police:</strong> +91-361-2237728
+                            </div>
+                            <div class="info-item">
+                                <strong>Risk Level:</strong> <span class="risk-low">Low</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Permit Required:</strong> No
+                            </div>
+                            <div class="info-item">
+                                <strong>Languages:</strong> Assamese, Bengali, Hindi, English
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="regional-card meghalaya">
+                        <div class="state-header">
+                            <h4>⛰️ Meghalaya</h4>
+                            <span class="next-destination">Next Destination</span>
+                        </div>
+                        <div class="state-info">
+                            <div class="info-item">
+                                <strong>Tourism Police:</strong> +91-364-2226618
+                            </div>
+                            <div class="info-item">
+                                <strong>Risk Level:</strong> <span class="risk-low">Low</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Permit Required:</strong> No
+                            </div>
+                            <div class="info-item">
+                                <strong>Languages:</strong> Khasi, Garo, English, Hindi
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="regional-card sikkim">
+                        <div class="state-header">
+                            <h4>🏔️ Sikkim</h4>
+                            <span class="planned-visit">Planned Visit</span>
+                        </div>
+                        <div class="state-info">
+                            <div class="info-item">
+                                <strong>Tourism Police:</strong> +91-3592-280688
+                            </div>
+                            <div class="info-item">
+                                <strong>Risk Level:</strong> <span class="risk-low">Low</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Permit Required:</strong> Yes (Available)
+                            </div>
+                            <div class="info-item">
+                                <strong>Languages:</strong> Nepali, Hindi, English
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="regional-card weather-advisory">
+                        <div class="advisory-header">
+                            <h4>🌧️ Regional Weather Advisory</h4>
+                            <span class="advisory-level moderate">Moderate Alert</span>
+                        </div>
+                        <div class="weather-details">
+                            <div class="weather-item">
+                                <strong>Current:</strong> Partly cloudy, 28°C
+                            </div>
+                            <div class="weather-item">
+                                <strong>Tomorrow:</strong> Heavy rainfall expected
+                            </div>
+                            <div class="weather-item">
+                                <strong>Advisory:</strong> Avoid remote areas during rainfall
+                            </div>
+                            <div class="weather-item">
+                                <strong>Alternative:</strong> Indoor cultural activities recommended
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trip Progress Tracker -->
+            <div class="trip-progress-panel">
+                <h3>🗺️ Your Northeast India Journey</h3>
+                <div class="progress-timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-dot completed"></div>
+                        <div class="timeline-content">
+                            <h4>Day 1: Guwahati Arrival</h4>
+                            <p>✅ Digital ID activated, safety systems online</p>
+                            <span class="timeline-date">Sep 11, 2025</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item current">
+                        <div class="timeline-dot current"></div>
+                        <div class="timeline-content">
+                            <h4>Day 2: Guwahati Exploration</h4>
+                            <p>📍 Currently exploring city center and cultural sites</p>
+                            <span class="timeline-date">Today</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item upcoming">
+                        <div class="timeline-dot upcoming"></div>
+                        <div class="timeline-content">
+                            <h4>Day 3-4: Shillong, Meghalaya</h4>
+                            <p>⏳ Scotland of the East, waterfalls, and hill stations</p>
+                            <span class="timeline-date">Sep 13-14</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item upcoming">
+                        <div class="timeline-dot upcoming"></div>
+                        <div class="timeline-content">
+                            <h4>Day 5-6: Gangtok, Sikkim</h4>
+                            <p>⏳ Mountain views, monasteries, and adventure activities</p>
+                            <span class="timeline-date">Sep 15-16</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item upcoming">
+                        <div class="timeline-dot upcoming"></div>
+                        <div class="timeline-content">
+                            <h4>Day 7: Departure</h4>
+                            <p>⏳ Return journey and digital ID deactivation</p>
+                            <span class="timeline-date">Sep 18</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions Panel -->
+            <div class="quick-actions-panel">
+                <h3>⚡ Quick Actions</h3>
+                <div class="actions-grid">
+                    <button class="action-btn emergency" onclick="navigateTo('sos.html')">
+                        <span class="action-icon">🚨</span>
+                        <span class="action-label">Emergency SOS</span>
+                    </button>
+                    <button class="action-btn services" onclick="navigateTo('services.html')">
+                        <span class="action-icon">🛎️</span>
+                        <span class="action-label">Emergency Services</span>
+                    </button>
+                    <button class="action-btn profile" onclick="navigateTo('profile.html')">
+                        <span class="action-icon">👤</span>
+                        <span class="action-label">My Profile</span>
+                    </button>
+                    <button class="action-btn location" onclick="shareLocation()">
+                        <span class="action-icon">📍</span>
+                        <span class="action-label">Share Location</span>
+                    </button>
+                    <button class="action-btn contact" onclick="callEmergencyContact()">
+                        <span class="action-icon">📞</span>
+                        <span class="action-label">Call Family</span>
+                    </button>
+                    <button class="action-btn update" onclick="updateTripPlan()">
+                        <span class="action-icon">🗓️</span>
+                        <span class="action-label">Update Trip</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics Panel -->
+            <div class="stats-panel">
+                <h3>📊 Your Travel Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📍</div>
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Locations Visited</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🛣️</div>
+                        <div class="stat-number">247 km</div>
+                        <div class="stat-label">Distance Traveled</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Safety Incidents</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏔️</div>
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">States Covered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Days Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🛡️</div>
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Safety Score</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating SOS Button -->
+    <div class="sos-container">
+        <button id="main-sos-button" class="sos-button" onclick="navigateTo('sos.html')" title="Emergency SOS - Hold for 3 seconds">
+            <div class="sos-pulse"></div>
+            <div class="sos-content">
+                <div class="sos-text">SOS</div>
+                <div class="sos-subtext">Emergency</div>
+            </div>
+        </button>
+    </div>
+
+    <!-- System Status Indicator -->
+    <div class="system-status-indicator">
+        <div class="status-pulse"></div>
+        <span class="status-text">All Systems Active</span>
+    </div>
+
+    <script src="enhanced-main.js"></script>
+    <script src="utils.js"></script>
+    <script>
+        // Dashboard-specific initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🏠 Dashboard initializing...');
+            
+            // Update location time
+            setInterval(() => {
+                const locationTime = document.getElementById('location-update-time');
+                if (locationTime) {
+                    const now = new Date();
+                    const timeAgo = Math.floor((now.getTime() - now.getTime()) / 1000);
+                    locationTime.textContent = timeAgo < 60 ? 'Now' : `${Math.floor(timeAgo / 60)}m ago`;
+                }
+            }, 30000);
+            
+            // Initialize dashboard-specific features
+            if (typeof initializeDashboard === 'function') {
+                initializeDashboard();
+            }
+        });
+
+        // Quick action functions
+        function shareLocation() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Current Location',
+                    text: 'I am currently at Guwahati, Assam - sharing via Smart Tourist Safety System',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback
+                const locationText = 'Current Location: Guwahati, Assam (26.1445°N, 91.7362°E) - Smart Tourist Safety System';
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(locationText);
+                    showToast('📍 Location copied to clipboard', 'success');
+                } else {
+                    showToast('📍 Location: Guwahati, Assam', 'info');
+                }
+            }
+        }
+
+        function callEmergencyContact() {
+            const primaryContact = '+91-9876543250';
+            if (confirm(`📞 Call primary emergency contact?\n\nPriya Kumar: ${primaryContact}`)) {
+                window.location.href = `tel:${primaryContact}`;
+            }
+        }
+
+        function updateTripPlan() {
+            showToast('🗓️ Redirecting to trip planning...', 'info');
+            setTimeout(() => {
+                navigateTo('profile.html#trip-details');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

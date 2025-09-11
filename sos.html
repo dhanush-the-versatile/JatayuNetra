@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Emergency - Smart Tourist Safety</title>
+    <link rel="stylesheet" href="enhanced-styles.css">
+    <meta name="theme-color" content="#dc2626">
+</head>
+<body>
+    <div class="sos-container">
+        <!-- Emergency Header -->
+        <div class="sos-header">
+            <div class="header-content">
+                <div class="emergency-logo">🚨</div>
+                <h1>Emergency Response Center</h1>
+                <p>Northeast India Tourist Safety System</p>
+                <div class="emergency-status" id="emergency-status">
+                    <span class="status-indicator monitoring"></span>
+                    <span class="status-text">AI Monitoring Active</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sos-main">
+            <!-- Tourist Information Panel -->
+            <div class="info-card tourist-info">
+                <h3>🆔 Tourist Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>ID:</strong>
+                        <span id="tourist-id">TST-AS-2025-001234</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Name:</strong>
+                        <span id="tourist-name">Rajesh Kumar</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Blood Group:</strong>
+                        <span id="blood-group">O+</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Emergency Contact:</strong>
+                        <span id="emergency-contact">+91-9876543250</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Medical Conditions:</strong>
+                        <span id="medical-conditions">None reported</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Travel Insurance:</strong>
+                        <span id="insurance-info">HDFC Travel - Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Location Panel -->
+            <div class="info-card location-info">
+                <h3>📍 Current Location</h3>
+                <div class="location-details">
+                    <div class="location-primary">
+                        <span class="location-icon">🗺️</span>
+                        <span class="location-address" id="current-location">Guwahati City Center, Assam</span>
+                    </div>
+                    <div class="coordinates">
+                        <span class="coord-label">Coordinates:</span>
+                        <span class="coord-value" id="coordinates">26.1445° N, 91.7362° E</span>
+                    </div>
+                    <div class="location-accuracy">
+                        <span class="accuracy-label">GPS Accuracy:</span>
+                        <span class="accuracy-value high" id="gps-accuracy">High (±3m)</span>
+                    </div>
+                    <div class="zone-status">
+                        <span class="zone-label">Current Zone:</span>
+                        <span class="zone-value safe" id="zone-status">Safe Zone</span>
+                    </div>
+                    <div class="last-update">
+                        <span class="update-label">Last Updated:</span>
+                        <span class="update-time" id="location-update">Just now</span>
+                    </div>
+                </div>
+                
+                <div class="location-map-placeholder">
+                    <div class="map-mockup">
+                        <div class="map-marker">📍</div>
+                        <div class="map-label">You are here</div>
+                        <div class="nearby-services">
+                            <div class="service-point police">👮 Police: 1.2km</div>
+                            <div class="service-point hospital">🏥 Hospital: 2.5km</div>
+                            <div class="service-point tourism">🏛️ Tourism Office: 0.8km</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Monitoring Status -->
+            <div class="info-card ai-status">
+                <h3>🤖 AI Safety Monitoring</h3>
+                <div class="monitoring-grid">
+                    <div class="monitor-item active">
+                        <div class="monitor-icon">📡</div>
+                        <div class="monitor-info">
+                            <strong>Location Tracking</strong>
+                            <span class="monitor-status">Active</span>
+                            <span class="monitor-detail">Last ping: 15 seconds ago</span>
+                        </div>
+                    </div>
+                    <div class="monitor-item active">
+                        <div class="monitor-icon">🎯</div>
+                        <div class="monitor-info">
+                            <strong>Behavior Analysis</strong>
+                            <span class="monitor-status">Normal Pattern</span>
+                            <span class="monitor-detail">Movement consistent with tourist activity</span>
+                        </div>
+                    </div>
+                    <div class="monitor-item active">
+                        <div class="monitor-icon">🚨</div>
+                        <div class="monitor-info">
+                            <strong>Anomaly Detection</strong>
+                            <span class="monitor-status">No Alerts</span>
+                            <span class="monitor-detail">All parameters within normal range</span>
+                        </div>
+                    </div>
+                    <div class="monitor-item active">
+                        <div class="monitor-icon">📱</div>
+                        <div class="monitor-info">
+                            <strong>Device Health</strong>
+                            <span class="monitor-status">Optimal</span>
+                            <span class="monitor-detail">Battery: 78% | Signal: Strong</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Speed Monitoring -->
+                <div class="speed-monitoring">
+                    <h4>⚡ Real-time Movement Analysis</h4>
+                    <div class="speed-display">
+                        <div class="speed-gauge">
+                            <div class="speed-value">
+                                <span id="current-speed">0</span>
+                                <span class="speed-unit">km/h</span>
+                            </div>
+                            <div class="speed-status safe" id="speed-status">Stationary</div>
+                        </div>
+                    </div>
+                    <div class="movement-insights">
+                        <div class="insight-item">
+                            <span class="insight-label">Today's Distance:</span>
+                            <span class="insight-value">12.7 km</span>
+                        </div>
+                        <div class="insight-item">
+                            <span class="insight-label">Average Speed:</span>
+                            <span class="insight-value">15 km/h</span>
+                        </div>
+                        <div class="insight-item">
+                            <span class="insight-label">Movement Pattern:</span>
+                            <span class="insight-value">Tourist Exploration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency Services Quick Access -->
+            <div class="info-card emergency-services">
+                <h3>🚨 Emergency Services</h3>
+                <div class="emergency-grid">
+                    <div class="emergency-item critical">
+                        <div class="emergency-icon">🚔</div>
+                        <div class="emergency-info">
+                            <strong>Police Emergency</strong>
+                            <span class="emergency-number">100</span>
+                            <span class="emergency-eta">ETA: < 3 minutes</span>
+                        </div>
+                        <button class="emergency-call-btn" onclick="callEmergency('100')">📞</button>
+                    </div>
+                    <div class="emergency-item critical">
+                        <div class="emergency-icon">🚑</div>
+                        <div class="emergency-info">
+                            <strong>Medical Emergency</strong>
+                            <span class="emergency-number">102</span>
+                            <span class="emergency-eta">ETA: < 5 minutes</span>
+                        </div>
+                        <button class="emergency-call-btn" onclick="callEmergency('102')">📞</button>
+                    </div>
+                    <div class="emergency-item urgent">
+                        <div class="emergency-icon">🏛️</div>
+                        <div class="emergency-info">
+                            <strong>Tourism Police</strong>
+                            <span class="emergency-number">+91-361-2237728</span>
+                            <span class="emergency-eta">Assam Tourism Wing</span>
+                        </div>
+                        <button class="emergency-call-btn" onclick="callTourismPolice()">📞</button>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-icon">🔥</div>
+                        <div class="emergency-info">
+                            <strong>Fire Emergency</strong>
+                            <span class="emergency-number">101</span>
+                            <span class="emergency-eta">ETA: < 8 minutes</span>
+                        </div>
+                        <button class="emergency-call-btn" onclick="callEmergency('101')">📞</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IoT Device Status -->
+            <div class="info-card iot-devices">
+                <h3>⌚ Connected Safety Devices</h3>
+                <div class="devices-status-grid">
+                    <div class="device-status connected">
+                        <div class="device-icon">📱</div>
+                        <div class="device-info">
+                            <strong>Mobile Safety App</strong>
+                            <span class="device-health">Connected</span>
+                            <span class="device-detail">Battery: 78% | GPS: Active</span>
+                        </div>
+                        <div class="device-indicator active"></div>
+                    </div>
+                    <div class="device-status connected">
+                        <div class="device-icon">⌚</div>
+                        <div class="device-info">
+                            <strong>Northeast Safety Band</strong>
+                            <span class="device-health">Connected</span>
+                            <span class="device-detail">Battery: 92% | Heart Rate: 72 bpm</span>
+                        </div>
+                        <div class="device-indicator active"></div>
+                    </div>
+                    <div class="device-status offline">
+                        <div class="device-icon">📍</div>
+                        <div class="device-info">
+                            <strong>Trek GPS Beacon</strong>
+                            <span class="device-health">Not Connected</span>
+                            <span class="device-detail">Available for remote areas</span>
+                        </div>
+                        <div class="device-indicator inactive"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main SOS Button -->
+            <div class="main-sos-section">
+                <h3>🚨 Emergency SOS Activation</h3>
+                <p class="sos-instruction">Press and hold the SOS button for 3 seconds to activate emergency response</p>
+                
+                <button id="main-sos-button" class="main-sos-button" onmousedown="startSOSActivation()" onmouseup="cancelSOSActivation()" ontouchstart="startSOSActivation()" ontouchend="cancelSOSActivation()">
+                    <div class="sos-pulse-ring"></div>
+                    <div class="sos-button-content">
+                        <div class="sos-icon">🚨</div>
+                        <div class="sos-text">SOS</div>
+                        <div class="sos-subtitle">EMERGENCY</div>
+                    </div>
+                    <div class="sos-progress" id="sos-progress"></div>
+                </button>
+                
+                <div class="sos-activation-info">
+                    <p>🔒 <strong>Triple Protection:</strong> Alerts Police + Medical + Family</p>
+                    <p>📍 <strong>Precise Location:</strong> GPS coordinates sent immediately</p>
+                    <p>🤖 <strong>AI Priority:</strong> Highest priority emergency response</p>
+                </div>
+
+                <!-- Alternative Emergency Methods -->
+                <div class="alternative-methods">
+                    <h4>📞 Alternative Emergency Access</h4>
+                    <div class="alt-methods-grid">
+                        <div class="alt-method">
+                            <div class="method-icon">🗣️</div>
+                            <div class="method-info">
+                                <strong>Voice Command</strong>
+                                <span>Say "Emergency Help" in any language</span>
+                            </div>
+                        </div>
+                        <div class="alt-method">
+                            <div class="method-icon">📱</div>
+                            <div class="method-info">
+                                <strong>Shake Device</strong>
+                                <span>Shake phone rapidly 5 times</span>
+                            </div>
+                        </div>
+                        <div class="alt-method">
+                            <div class="method-icon">⌚</div>
+                            <div class="method-info">
+                                <strong>Smart Band</strong>
+                                <span>Double-tap safety band button</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety Tips for Northeast India -->
+            <div class="info-card safety-tips">
+                <h3>💡 Northeast India Safety Tips</h3>
+                <div class="tips-grid">
+                    <div class="tip-item">
+                        <div class="tip-icon">🌧️</div>
+                        <div class="tip-content">
+                            <strong>Monsoon Safety</strong>
+                            <p>Heavy rainfall can cause landslides. Stay updated with weather warnings and avoid traveling during severe weather.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">🏔️</div>
+                        <div class="tip-content">
+                            <strong>Remote Area Travel</strong>
+                            <p>Inform local authorities when visiting remote areas. Carry backup communication devices and extra supplies.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">📋</div>
+                        <div class="tip-content">
+                            <strong>Document Requirements</strong>
+                            <p>Some areas require special permits. Keep your Digital Tourist ID and original documents easily accessible.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">📶</div>
+                        <div class="tip-content">
+                            <strong>Connectivity Issues</strong>
+                            <p>Network coverage may be limited in remote areas. Download offline maps and emergency contact information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="sos-navigation">
+            <button class="nav-btn" onclick="goBackToDashboard()">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Dashboard</span>
+            </button>
+            <button class="nav-btn" onclick="showEmergencyServices()">
+                <span class="nav-icon">🚨</span>
+                <span class="nav-label">Services</span>
+            </button>
+            <button class="nav-btn active">
+                <span class="nav-icon">📍</span>
+                <span class="nav-label">SOS</span>
+            </button>
+            <button class="nav-btn" onclick="showProfile()">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Profile</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Emergency Modals -->
+    <!-- SOS Confirmation Modal -->
+    <div id="sos-confirmation-modal" class="modal hidden">
+        <div class="modal-content emergency-modal">
+            <div class="emergency-header">
+                <h2>🚨 EMERGENCY SOS ACTIVATED</h2>
+                <div class="countdown-timer" id="countdown-timer">15</div>
+            </div>
+            <div class="emergency-question">
+                <p>Are you safe? Emergency services will be contacted in <span id="countdown-text">15</span> seconds.</p>
+            </div>
+            <div class="emergency-buttons">
+                <button id="safe-button" class="btn emergency-yes" onclick="confirmSafety()">
+                    ✅ I'm Safe
+                </button>
+                <button id="help-button" class="btn emergency-no" onclick="requestEmergencyHelp()">
+                    🚨 Send Help
+                </button>
+            </div>
+            <div class="timeout-warning">
+                <p>If no response, emergency services will be automatically contacted</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Protocol Active Modal -->
+    <div id="emergency-protocol-modal" class="modal hidden">
+        <div class="modal-content emergency-protocol">
+            <div class="emergency-message">
+                <h2>🚨 EMERGENCY PROTOCOL ACTIVATED</h2>
+                <p><strong>Help is on the way!</strong> Emergency services have been notified and are responding to your location.</p>
+            </div>
+            
+            <div class="protocol-status">
+                <div class="protocol-item">
+                    <div class="protocol-icon">🚔</div>
+                    <div class="protocol-details">
+                        <strong>Police Dispatch</strong>
+                        <p>Nearest unit: Highway Police Station (1.3km)</p>
+                        <span class="protocol-status-badge">Dispatched</span>
+                    </div>
+                </div>
+                <div class="protocol-item">
+                    <div class="protocol-icon">🚑</div>
+                    <div class="protocol-details">
+                        <strong>Medical Emergency</strong>
+                        <p>Ambulance from City General Hospital (2.1km)</p>
+                        <span class="protocol-status-badge">En Route</span>
+                    </div>
+                </div>
+                <div class="protocol-item">
+                    <div class="protocol-icon">📞</div>
+                    <div class="protocol-details">
+                        <strong>Emergency Contacts</strong>
+                        <p>Family and emergency contacts notified</p>
+                        <span class="protocol-status-badge">Contacted</span>
+                    </div>
+                </div>
+                <div class="protocol-item">
+                    <div class="protocol-icon">🏛️</div>
+                    <div class="protocol-details">
+                        <strong>Tourism Authority</strong>
+                        <p>Assam Tourism Police alerted</p>
+                        <span class="protocol-status-badge">Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emergency-actions">
+                <button class="btn btn-primary" onclick="cancelEmergency()">
+                    🛑 Cancel Emergency (I'm Safe)
+                </button>
+                <button class="btn btn-secondary" onclick="contactEmergencyServices()">
+                    📞 Talk to Emergency Services
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Monitoring Indicator -->
+    <div class="monitoring-indicator" id="monitoring-indicator">
+        <div class="indicator-pulse"></div>
+        <span class="indicator-text">AI Monitoring Active</span>
+        <span class="indicator-detail">Last check: <span id="last-check-time">now</span></span>
+    </div>
+
+    <script src="enhanced-main.js"></script>
+    <script src="utils.js"></script>
+</body>
+</html>
